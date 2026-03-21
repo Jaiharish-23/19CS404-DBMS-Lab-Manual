@@ -130,7 +130,6 @@ ALTER TABLE employee ADD last_name varchar(50) ;
 ```
 
 **Output:**
-
 <img width="1131" height="184" alt="image" src="https://github.com/user-attachments/assets/581d3c1e-d963-4263-aa01-5b14d1d8a14a" />
 
 
@@ -155,7 +154,6 @@ INSERT INTO Student_details VALUES (201,'David Lee','M','Physics',92);
 ```
 
 **Output:**
-
 <img width="1166" height="138" alt="image" src="https://github.com/user-attachments/assets/be37b5fd-9cd3-4b07-8068-8da8ca9a9dee" />
 
 
@@ -187,7 +185,6 @@ CHECK (Stock >=0));
 ```
 
 **Output:**
-
 <img width="1007" height="165" alt="image" src="https://github.com/user-attachments/assets/37a9f554-6079-43df-ab55-b72794152be0" />
 
 
@@ -215,7 +212,6 @@ SELECT * FROM  Out_of_print_books;
 ```
 
 **Output:**
-
 <img width="1209" height="166" alt="image" src="https://github.com/user-attachments/assets/86807bef-e671-42c2-9d91-af1ecdff25da" />
 
 
@@ -245,7 +241,6 @@ PRIMARY KEY (DepartmentID)
 ```
 
 **Output:**
-
 <img width="1212" height="128" alt="image" src="https://github.com/user-attachments/assets/eb2b3009-8e7f-40b7-bebf-f9abb1fbf2a0" />
 
 
@@ -273,7 +268,6 @@ ALTER TABLE employees ADD salary INTEGER CHECK (salary>0);
 ```
 
 **Output:**
-
 <img width="1136" height="160" alt="image" src="https://github.com/user-attachments/assets/73edbd7c-53d5-42e7-b062-fcfb04f373fb" />
 
 
@@ -309,7 +303,6 @@ CHECK (Salary>0));
 ```
 
 **Output:**
-
 <img width="1275" height="257" alt="image" src="https://github.com/user-attachments/assets/d1dff717-e625-4be8-b563-6858941dee5f" />
 
 
@@ -345,7 +338,6 @@ FOREIGN KEY (icom_id) REFERENCES company(com_id) ON UPDATE CASCADE ON DELETE CAS
 ```
 
 **Output:**
-
 <img width="1089" height="217" alt="image" src="https://github.com/user-attachments/assets/a65feb77-a105-4c1e-9e9a-1097c4289ea9" />
 
 
