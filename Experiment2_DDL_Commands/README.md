@@ -1,5 +1,9 @@
 # Experiment 2: DDL Commands
-
+```
+Developed by;
+Name : JAI HARISH R
+Reg No : 212224040124
+```
 ## AIM
 To study and implement DDL commands and different types of constraints.
 
@@ -104,124 +108,305 @@ CREATE TABLE Table_Name (
 ```
 
 **Question 1**
---
--- Paste Question 1 here
+```
+Write an SQL query to add two new columns, first_name and last_name, to the table employee. Both columns should have a data type of varchar(50).
 
+For example:
+
+Test	Result
+pragma table_info('employee');
+cid         name        type        notnull     dflt_value  pk
+----------  ----------  ----------  ----------  ----------  ----------
+0           id          integer     0                       0
+1           salary      number      0                       0
+2           first_name  varchar(50  0                       0
+3           last_name   varchar(50  0                       0
+
+```
+***CODE :***
 ```sql
--- Paste your SQL code below for Question 1
+ALTER TABLE employee ADD first_name varchar(50) ; 
+ALTER TABLE employee ADD last_name varchar(50) ; 
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="1131" height="184" alt="image" src="https://github.com/user-attachments/assets/581d3c1e-d963-4263-aa01-5b14d1d8a14a" />
+
+
+
 
 **Question 2**
----
--- Paste Question 2 here
+```
+Insert a student with RollNo 201, Name David Lee, Gender M, Subject Physics, and MARKS 92 into the Student_details table.
 
+For example:
+
+Test	Result
+SELECT * FROM Student_details WHERE RollNo = 201;
+RollNo      Name        Gender      Subject     MARKS
+----------  ----------  ----------  ----------  ----------
+201         David Lee   M           Physics     92
+
+```
+***CODE :***
 ```sql
--- Paste your SQL code below for Question 2
+INSERT INTO Student_details VALUES (201,'David Lee','M','Physics',92);
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="1166" height="138" alt="image" src="https://github.com/user-attachments/assets/be37b5fd-9cd3-4b07-8068-8da8ca9a9dee" />
+
 
 **Question 3**
----
--- Paste Question 3 here
+```
+Create a table named Products with the following constraints:
 
+ProductID should be the primary key.
+ProductName should be NOT NULL.
+Price is of real datatype and should be greater than 0.
+Stock is of integer datatype and should be greater than or equal to 0.
+For example:
+
+Test	Result
+INSERT INTO Products
+VALUES (1, NULL,0,5);
+Error: NOT NULL constraint failed: Products.ProductName
+
+```
+***CODE :***
 ```sql
--- Paste your SQL code below for Question 3
+CREATE TABLE Products(
+ProductID INTEGER PRIMARY KEY ,
+ProductName TEXT NOT NULL ,
+Price REAL,
+Stock INTEGER,
+CHECK (Price>0),
+CHECK (Stock >=0));
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="1007" height="165" alt="image" src="https://github.com/user-attachments/assets/37a9f554-6079-43df-ab55-b72794152be0" />
+
 
 **Question 4**
----
--- Paste Question 4 here
 
+```
+Insert all books from Out_of_print_books into Books
+
+Table attributes are ISBN, Title, Author, Publisher, YearPublished
+
+For example:
+
+Test	Result
+select * from Books;
+ISBN            Title           Author              Publisher      YearPublished
+--------------  --------------  ------------------  -------------  -------------
+978-1234567890  The Lost World  Arthur Conan Doyle  Vintage Books  1912
+978-0987654321  Gone with the   Margaret Mitchell   Macmillan      1936
+978-1122334455  Moby Dick       Herman Melville     Harper & Brot  1851
+```
+***CODE :***
 ```sql
--- Paste your SQL code below for Question 4
+INSERT INTO Books (ISBN,Title,Author,Publisher,YearPublished)
+SELECT * FROM  Out_of_print_books;
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="1209" height="166" alt="image" src="https://github.com/user-attachments/assets/86807bef-e671-42c2-9d91-af1ecdff25da" />
+
 
 **Question 5**
----
--- Paste Question 5 here
+```
+Create a table named Department with the following constraints:
+DepartmentID as INTEGER should be the primary key.
+DepartmentName as TEXT should be unique and not NULL.
+Location as TEXT.
+For example:
 
+Test	Result
+INSERT INTO Department (DepartmentID, DepartmentName, Location) VALUES (1, 'Human Resources', 'New York');
+select * from Department;
+DepartmentID  DepartmentName   Location
+------------  ---------------  ----------
+1             Human Resources  New York
+```
+***CODE :***
 ```sql
--- Paste your SQL code below for Question 5
+CREATE TABLE  Department(
+DepartmentID INTEGER ,
+DepartmentName TEXT NOT NULL UNIQUE ,
+Location TEXT ,
+PRIMARY KEY (DepartmentID)
+);
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="1212" height="128" alt="image" src="https://github.com/user-attachments/assets/eb2b3009-8e7f-40b7-bebf-f9abb1fbf2a0" />
+
 
 **Question 6**
----
--- Paste Question 6 here
+```
+Write an SQL query to add a new column salary of type INTEGER to the Employees table, with a CHECK constraint that ensures the value in this column is greater than 0.
 
+ 
+
+ 
+
+For example:
+
+Test	Result
+pragma table_info('employees');
+cid         name        type        notnull     dflt_value  pk
+----------  ----------  ----------  ----------  ----------  ----------
+0           id          INTEGER     0                       1
+1           name        TEXT        1                       0
+2           salary      INTEGER     0                       0
+```
+***CODE :***
 ```sql
--- Paste your SQL code below for Question 6
+ALTER TABLE employees ADD salary INTEGER CHECK (salary>0);
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="1136" height="160" alt="image" src="https://github.com/user-attachments/assets/73edbd7c-53d5-42e7-b062-fcfb04f373fb" />
+
 
 **Question 7**
----
--- Paste Question 7 here
+```
+Create a table named Employees with the following constraints:
 
+EmployeeID should be the primary key.
+FirstName and LastName should be NOT NULL.
+Email should be unique.
+Salary should be greater than 0.
+DepartmentID should be a foreign key referencing the Departments table.
+For example:
+
+Test	Result
+-- Attempt to insert a record with NULL FirstName
+INSERT INTO Employees (EmployeeID, FirstName, LastName, Email, Salary, DepartmentID)
+VALUES (1, NULL, 'Doe', 'john.doe@example.com', 50000, 1);
+Error: NOT NULL constraint failed: Employees.FirstName
+
+```
+***CODE :***
 ```sql
--- Paste your SQL code below for Question 7
+create TABLE Employees(
+EmployeeID NUMBER PRIMARY KEY,
+FirstName TEXT NOT NULL,
+LastName TEXT NOT NULL,
+Email TEXT UNIQUE,
+Salary INTEGER ,
+DepartmentID INTEGER ,
+FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID),
+CHECK (Salary>0));
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="1275" height="257" alt="image" src="https://github.com/user-attachments/assets/d1dff717-e625-4be8-b563-6858941dee5f" />
+
 
 **Question 8**
----
--- Paste Question 8 here
+```
+Create a new table named item with the following specifications and constraints:
+item_id as TEXT and as primary key.
+item_desc as TEXT.
+rate as INTEGER.
+icom_id as TEXT with a length of 4.
+icom_id is a foreign key referencing com_id in the company table.
+The foreign key should cascade updates and deletes.
+item_desc and rate should not accept NULL.
+For example:
 
+Test	Result
+INSERT INTO item VALUES("ITM5","Charlie Gold",700,"COM4");
+UPDATE company SET com_id='COM5' WHERE com_id='COM4';
+SELECT * FROM item;
+item_id     item_desc     rate        icom_id
+----------  ------------  ----------  ----------
+ITM5        Charlie Gold  700         COM5
+
+```
+***CODE :***
 ```sql
--- Paste your SQL code below for Question 8
+CREATE TABLE item(
+item_id TEXT PRIMARY KEY,
+item_desc TEXT not null ,
+rate INTEGER not null,
+icom_id VARCHAR(4),
+FOREIGN KEY (icom_id) REFERENCES company(com_id) ON UPDATE CASCADE ON DELETE CASCADE );
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="1089" height="217" alt="image" src="https://github.com/user-attachments/assets/a65feb77-a105-4c1e-9e9a-1097c4289ea9" />
+
 
 **Question 9**
----
--- Paste Question 9 here
+```
+Insert the following products into the Products table:
+
+Name        Category     Price       Stock
+----------  -----------  ----------  ----------
+Smartphone  Electronics  800         150
+Headphones  Accessories  200         300
+For example:
+
+Test	Result
+SELECT Name, Category, Price, Stock FROM Products;
+
+Name        Category     Price       Stock
+----------  -----------  ----------  ----------
+Smartphone  Electronics  800         150
+Headphones  Accessories  200         300
+```
+***CODE :***
 
 ```sql
--- Paste your SQL code below for Question 9
+INSERT INTO Products (Name,Category,Price,Stock) VALUES
+('Smartphone','Electronics',800,150),('Headphones','Accessories',200,300); 
 ```
 
 **Output:**
+<img width="1011" height="199" alt="image" src="https://github.com/user-attachments/assets/2d729ace-54f5-413e-bcca-f9a19752c37d" />
 
-![Output9](output.png)
 
 **Question 10**
----
--- Paste Question 10 here
+```
+Create a table named Members with the following columns:
 
+MemberID as INTEGER
+MemberName as TEXT
+JoinDate as DATE
+For example:
+
+Test	Result
+pragma table_info('Members');
+cid         name        type        notnull     dflt_value  pk
+----------  ----------  ----------  ----------  ----------  ----------
+0           MemberID    INTEGER     0                       0
+1           MemberName  TEXT        0                       0
+2           JoinDate    DATE        0                       0
+
+```
+***CODE :***
 ```sql
--- Paste your SQL code below for Question 10
+CREATE TABLE Members(
+MemberID INTEGER ,
+MemberName TEXT,
+JoinDate DATE );
 ```
 
 **Output:**
+<img width="1274" height="226" alt="image" src="https://github.com/user-attachments/assets/4b670dc1-7270-49e9-ae70-512ef5cb7600" />
 
-![Output10](output.png)
 
 
 ## RESULT
