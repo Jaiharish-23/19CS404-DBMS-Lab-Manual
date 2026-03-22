@@ -1,4 +1,9 @@
 # ER Diagram Workshop – Submission Template
+```
+Developed by;
+Name : JAI HARISH R
+Reg No : 212224040124
+```
 
 ## Objective
 To understand and apply ER modeling concepts by creating ER diagrams for real-world applications.
