@@ -172,7 +172,6 @@ WHERE category = 'Bakery';
 ```
 
 **Output:**
-
 <img width="1235" height="248" alt="image" src="https://github.com/user-attachments/assets/0a29ced5-0f58-41a0-bd46-b3e0bf923a94" />
 
 
